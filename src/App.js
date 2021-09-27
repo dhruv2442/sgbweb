@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter,Switch,Route } from 'react-router-dom';
 import AddProducts from './components/AddProducts';
+import Cart from './components/Cart';
 import ErrorPage from './components/ErrorPage';
 import Home from './components/Home';
 import Login from './components/Login';
@@ -15,6 +16,7 @@ const App = () => {
           <Route  path="/signup" component ={SignUp}/>
           <Route  path="/login" component ={Login}/>
           <Route  path="/add-products" component ={AddProducts}/>
+          <Route  path="/cart" component ={Cart}/>
           <Route component={ErrorPage}/>
         </Switch>
       </BrowserRouter>
