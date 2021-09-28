@@ -54,7 +54,7 @@ input[type=number] {
   background-color: #f6f6f6;  
 }
 
-@media(max-width: 450px){
+@media(max-width: 500px){
   .navbar{
     flex-direction: column;
     justify-content: center;
@@ -62,14 +62,9 @@ input[type=number] {
 }
 
 .navbar .logo{
-  width: 150px;
   height: auto;
 }
 
-.navbar .logo img{
-  width: 100%;
-  height: 100%;
-}
 
 .navbar .rightside{
   display: flex;
@@ -79,7 +74,7 @@ input[type=number] {
   align-items: center;
 }
 
-@media(max-width: 450px){
+@media(max-width: 500px){
   .navbar .rightside{
     flex-direction: column;
     justify-content: center;
@@ -92,7 +87,7 @@ input[type=number] {
   margin: 0px 10px;  
 }
 
-@media(max-width: 450px){
+@media(max-width: 500px){
   .navbar .rightside div{
     margin: 10px 0px;    
   }
@@ -138,7 +133,7 @@ input[type=number] {
   padding: 20px;
   border-radius: 15px;
   margin: 10px;
-  background: linear-gradient(#ffffff, #ffffff 30%,#111e6c 30%,#1116ec);
+  background: linear-gradient(#ffe3e3, #ffe3e3 30%,#111e6c 30%,#1116ec);
 }
 .main_card:hover{box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
@@ -155,7 +150,7 @@ font-size: 1.3rem;
 border-radius: 5px;
 }
 
-.main_card .imgBx img{
+.main_card .imgBx .pr_img{
   max-height: 100%;
 max-width: 100%;
 }
@@ -223,7 +218,7 @@ h2 {
 .card {
   border: none;
 }
-.product_img img {
+.product_img .img {
   min-width: 200px;
   max-height: 200px;
 }

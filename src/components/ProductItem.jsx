@@ -1,4 +1,6 @@
 import React from 'react'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const ProductItem = ({item,addToCart}) => {
 
@@ -9,7 +11,7 @@ const ProductItem = ({item,addToCart}) => {
     return (
         <div class='main_card' key={id}>
         <div class='imgBx'>
-          <img src={downloadURL} alt='product' srcset='' />
+          <LazyLoadImage effect="blur" className="pr_img" src={downloadURL} alt='product' placeholderSrc={process.env.PUBLIC_URL + "logo.png"} />
         </div>
         <div class='details'>
           <div class='pr_name'>{title}</div>

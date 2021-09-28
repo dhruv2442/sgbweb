@@ -86,13 +86,45 @@ const Cart = () => {
         }
       });
     }
-
-
   }
+
+  // getting the qty from cartProducts in a seperate array
+  const qty = cartProducts.map(cartProduct=>{
+    return cartProduct.qty;
+})
+
+// reducing the qty in a single value
+const reducerOfQty = (accumulator, currentValue)=>accumulator+currentValue;
+
+const totalQty = qty.reduce(reducerOfQty,0);
+
+// console.log(totalQty);
+
+    // getting the TotalProductPrice from cartProducts in a seperate array
+    const price = cartProducts.map((cartProduct)=>{
+      return cartProduct.TotalProductPrice;
+  })
+
+  // reducing the price in a single value
+  const reducerOfPrice = (accumulator,currentValue)=>accumulator+currentValue;
+
+  const totalPrice = price.reduce(reducerOfPrice,0);
+
+  const [totalProducts, setTotalProducts]=useState(0);
+  // getting cart products   
+  useEffect(()=>{        
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        onSnapshot(collection(fs,'Cart' + user.uid),(snapshot)=>{
+            setTotalProducts(snapshot.docs.length);
+        })
+        }
+    });     
+  },[])  
 
   return (
     <>
-      <Navbar user={user} />
+      <Navbar user={user} totalProducts={totalProducts}/>
       <br />
       <br />
       {cartProducts.length <1 && (
@@ -116,9 +148,15 @@ const Cart = () => {
                   <div className='right_side p-3 shadow-lg bg-white'>
                     <h2 className='product_name mb-5'>The Total Amount Of</h2>
                     <div className='price_indiv d-flex justify-content-between'>
+                      <p>Total Quantity:</p>
+                      <p>
+                        <span>{totalQty}</span> Nos.
+                      </p>
+                    </div>
+                    <div className='price_indiv d-flex justify-content-between'>
                       <p>Product amount</p>
                       <p>
-                        Rs. <span>680</span>
+                        Rs. <span>{totalPrice}</span>
                       </p>
                     </div>
                     <div className='price_indiv d-flex justify-content-between'>
@@ -129,9 +167,9 @@ const Cart = () => {
                     </div>
                     <hr />
                     <div className='total_amt d-flex justify-content-between fw-bold'>
-                      <p>The Total amount of (including VAT)</p>
+                      <p>Total amount(including VAT)</p>
                       <p>
-                        Rs. <span>730</span>
+                        Rs. <span>{totalPrice + 50}</span>
                       </p>
                     </div>
                     <button className='btn btn-primary text-uppercase '>

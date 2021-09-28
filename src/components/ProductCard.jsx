@@ -2,6 +2,8 @@ import React from "react";
 import { fs,auth } from "../config/Config";
 import { deleteDoc,doc,collection } from "@firebase/firestore";
 import { onAuthStateChanged } from "@firebase/auth";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const ProductCard = ({ cartProductIncrease,cartProductDecrease, product }) => {
   const { title, price, downloadURL, category, qty, TotalProductPrice } =
@@ -32,7 +34,7 @@ const ProductCard = ({ cartProductIncrease,cartProductDecrease, product }) => {
       <div className='row'>
         {/* cart images div */}
         <div className='col-md-5 col-11 mx-auto bg-light d-flex justify-content-center align-items-center shadow product_img my-2'>
-          <img src={downloadURL} alt='img' className='img-fluid' />
+          <LazyLoadImage effect="blur" src={downloadURL} alt='img' className='img-fluid img' placeholderSrc={process.env.PUBLIC_URL + "logo.png"}/>
         </div>
         {/* cart product details */}
         <div className='col-md-7 col-11 mx-auto px-4 mt-2'>
@@ -94,14 +96,14 @@ const ProductCard = ({ cartProductIncrease,cartProductDecrease, product }) => {
                 </li>
               </ul>
               <div className='col-md-11 col-6 mb-4 mt-4 product_price text-end'>
-                Price: {price}
+                Price: {price} / Kg
               </div>
             </div>
           </div>
           <div className='row'>
             <div className='col-5 d-flex justify-content-between remove_wish'>
-              <p className = "btn btn-outline-danger" onClick={handleCartProductDelete}>
-                <i className='fas fa-trash-alt'></i> Remove Item
+              <p className = " btn btn-outline-danger p-1" onClick={handleCartProductDelete}>
+                <i className='fas fa-trash-alt '></i> <span className="d-none d-md-block position-relative"> Remove Item</span>
               </p>
             </div>
             <div className='col-7 d-flex justify-content-end price_money'>

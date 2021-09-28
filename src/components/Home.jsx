@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { auth, fs } from '../config/Config';
 import { onAuthStateChanged } from '@firebase/auth';
 import Navbar from './Navbar';
-import { doc, getDoc, getDocs, collection ,setDoc} from '@firebase/firestore';
+import { doc, getDoc, getDocs, collection ,setDoc,onSnapshot} from '@firebase/firestore';
 import { Route, Switch } from 'react-router';
 import HomeMain from './HomeMain';
 import { All, Namkeen, Sweets } from './CategoryStuff';
@@ -90,9 +90,21 @@ const Home = (props) => {
     }
   }
 
+  const [totalProducts, setTotalProducts]=useState(0);
+  // getting cart products   
+  useEffect(()=>{        
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        onSnapshot(collection(fs,'Cart' + user.uid),(snapshot)=>{
+            setTotalProducts(snapshot.docs.length);
+        })
+        }
+    });     
+  },[])  
+
   return (
     <div>
-      <Navbar user={user} />
+      <Navbar user={user} totalProducts={totalProducts}/>
       <br />
       <Switch>
       <Route exact path="/" render={()=>(
