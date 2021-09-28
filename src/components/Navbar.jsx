@@ -26,6 +26,10 @@ const Navbar = ({user}) => {
             </>}
             {user&&<>
                     <div><Link className='navlink' to="/">{user}</Link></div>
+                    <div><Link className='navlink' to="/">Home</Link></div>
+                    <div><Link className='navlink' to="/all">All Products</Link></div>
+                    <div><Link className='navlink' to="/sweets">Sweets</Link></div>
+                    <div><Link className='navlink' to="/namkeen">Namkeen</Link></div>
                     <div className='cart-menu-btn'>
                         <Link className='navlink' to="/cart">
                         <i class="fas fa-shopping-cart"/>

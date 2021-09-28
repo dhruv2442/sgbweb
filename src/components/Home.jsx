@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { auth, fs } from '../config/Config';
 import { onAuthStateChanged } from '@firebase/auth';
 import Navbar from './Navbar';
-import Products from './Products';
 import { doc, getDoc, getDocs, collection ,setDoc} from '@firebase/firestore';
+import { Route, Switch } from 'react-router';
+import HomeMain from './HomeMain';
+import { All, Namkeen, Sweets } from './CategoryStuff';
 // import { Route, Switch } from 'react-router';
 
 const Home = (props) => {
@@ -62,10 +64,11 @@ const Home = (props) => {
       if (productsArray.length === querySnapshot.docs.length) {
         setProducts(productsArray);
       }
-      //   console.log(doc.id, " => ", doc.data());
+      //   console.log();
     });
   };
 
+  // console.log(products)
   useEffect(() => {
     getProducts();
   }, []);
@@ -91,17 +94,23 @@ const Home = (props) => {
     <div>
       <Navbar user={user} />
       <br />
-      {products.length > 0 && (
-        <div className='all container-fluid'>
-          <h4 className='text-center'>Featured Products</h4>
-          <Products products={products} addToCart={addToCart} />
-        </div>
-      )}
-      {products.length < 1 && (
-          <div className="container-fluid d-flex justify-content-center align-items-center">
-              Please wait...Products are coming.
-          </div>
-      )}
+      <Switch>
+      <Route exact path="/" render={()=>(
+        <HomeMain products={products} addToCart={addToCart}/>
+      )}/>
+      <Route  exact path="/all" render={()=>(
+        <All products={products} addToCart={addToCart}/>
+      )}/>
+      <Route  exact path="/sweets" render={()=>(
+        <Sweets products={products} addToCart={addToCart}/>
+        //<div>Sweetc</div>
+      )}/>
+      <Route exact path="/namkeen" render={()=>(
+        <Namkeen products={products} addToCart={addToCart}/>
+      )}/>
+
+      
+      </Switch>
     </div>
   );
 };
