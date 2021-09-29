@@ -3,7 +3,7 @@ import Products from './Products'
 import { Data } from './Home';
 
 const All = ({addToCart}) => {
-  const products = useContext(Data);
+  const products = useContext(Data).data;
     const allProducts = products.filter((elem) => {
         return elem.category !== 'Home';
       });
@@ -24,7 +24,7 @@ const All = ({addToCart}) => {
     )
 }
 const Sweets = ({addToCart}) => {
-  const products = useContext(Data);
+  const products = useContext(Data).data;
     const sweetProducts = products.filter((elem) => {
         return elem.category === "Sweets";
       });
@@ -45,7 +45,7 @@ const Sweets = ({addToCart}) => {
     )
 }
 const Namkeen = ({addToCart}) => {
-  const products = useContext(Data);
+  const products = useContext(Data).data;
     const namkeenProducts = products.filter((elem) => {
         return elem.category === "Namkeen";
       });

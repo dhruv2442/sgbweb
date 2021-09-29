@@ -3,7 +3,7 @@ import Products from './Products'
 import { Data } from './Home';
 
 const HomeMain = ({addToCart}) => {
-    const products = useContext(Data);
+    const products = useContext(Data).data;
     return (
         <>
         {products.length > 0 && (
