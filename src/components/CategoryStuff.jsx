@@ -1,7 +1,9 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import Products from './Products'
+import { Data } from './Home';
 
-const All = ({products,addToCart}) => {
+const All = ({addToCart}) => {
+  const products = useContext(Data);
     const allProducts = products.filter((elem) => {
         return elem.category !== 'Home';
       });
@@ -21,7 +23,8 @@ const All = ({products,addToCart}) => {
           </>
     )
 }
-const Sweets = ({products,addToCart}) => {
+const Sweets = ({addToCart}) => {
+  const products = useContext(Data);
     const sweetProducts = products.filter((elem) => {
         return elem.category === "Sweets";
       });
@@ -41,7 +44,8 @@ const Sweets = ({products,addToCart}) => {
           </>
     )
 }
-const Namkeen = ({products,addToCart}) => {
+const Namkeen = ({addToCart}) => {
+  const products = useContext(Data);
     const namkeenProducts = products.filter((elem) => {
         return elem.category === "Namkeen";
       });

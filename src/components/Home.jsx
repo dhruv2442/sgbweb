@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,createContext } from 'react';
 import { auth, fs } from '../config/Config';
 import { onAuthStateChanged } from '@firebase/auth';
 import Navbar from './Navbar';
@@ -7,6 +7,8 @@ import { Route, Switch } from 'react-router';
 import HomeMain from './HomeMain';
 import { All, Namkeen, Sweets } from './CategoryStuff';
 // import { Route, Switch } from 'react-router';
+
+const Data = createContext();
 
 const Home = (props) => {
 
@@ -108,17 +110,26 @@ const Home = (props) => {
       <br />
       <Switch>
       <Route exact path="/" render={()=>(
+        <Data.Provider value={products}>
+               
         <HomeMain products={products} addToCart={addToCart}/>
+              </Data.Provider>
       )}/>
       <Route  exact path="/all" render={()=>(
+        <Data.Provider value={products}>
         <All products={products} addToCart={addToCart}/>
+        </Data.Provider>
       )}/>
       <Route  exact path="/sweets" render={()=>(
+        <Data.Provider value={products}>
         <Sweets products={products} addToCart={addToCart}/>
+        </Data.Provider>
         //<div>Sweetc</div>
       )}/>
       <Route exact path="/namkeen" render={()=>(
+        <Data.Provider value={products}>
         <Namkeen products={products} addToCart={addToCart}/>
+        </Data.Provider>
       )}/>
 
       
@@ -128,3 +139,4 @@ const Home = (props) => {
 };
 
 export default Home;
+export {Data};
