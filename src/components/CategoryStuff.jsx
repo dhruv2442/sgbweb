@@ -29,7 +29,7 @@ const Sweets = ({products,addToCart}) => {
         <>
         {sweetProducts.length > 0 && (
             <div className='all container-fluid'>
-              <h4 className='text-center'>Featured Products</h4>
+              <h4 className='text-center'>Sweets</h4>
               <Products products={sweetProducts} addToCart={addToCart} />
             </div>
           )}
@@ -49,7 +49,7 @@ const Namkeen = ({products,addToCart}) => {
         <>
         {namkeenProducts.length > 0 && (
             <div className='all container-fluid'>
-              <h4 className='text-center'>Featured Products</h4>
+              <h4 className='text-center'>Namkeen</h4>
               <Products products={namkeenProducts} addToCart={addToCart} />
             </div>
           )}

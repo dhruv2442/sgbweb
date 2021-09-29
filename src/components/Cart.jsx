@@ -4,8 +4,14 @@ import { onAuthStateChanged } from '@firebase/auth';
 import Navbar from './Navbar';
 import { doc, getDoc,collection, onSnapshot,updateDoc } from '@firebase/firestore';
 import CartProducts from './CartProducts';
+import  Modal  from "./Modal";
 
 const Cart = () => {
+  const [showModal,setShowModal] =useState(false);
+
+  const triggerModel=()=>{
+    setShowModal(true)
+  }
   //get Current user
   const GetCurrentUser = () => {
     const [user, setUser] = useState(null);
@@ -120,7 +126,12 @@ const totalQty = qty.reduce(reducerOfQty,0);
         })
         }
     });     
-  },[])  
+  },[]) 
+  
+  //hide modal function
+  const hideModal=()=>{
+    setShowModal(false);
+  }
 
   return (
     <>
@@ -128,7 +139,7 @@ const totalQty = qty.reduce(reducerOfQty,0);
       <br />
       <br />
       {cartProducts.length <1 && (
-        <div className="container-fluid d-flex justify-content-center align-nav-item">No Products To show....</div>
+        <div className="container-fluid d-flex justify-content-center align-items-center"><h1>Your cart is Empty......</h1></div>
       )}
       {cartProducts.length > 0 && (
         <div className='bg-light'>
@@ -146,7 +157,7 @@ const totalQty = qty.reduce(reducerOfQty,0);
                 {/* right side div */}
                 <diiv className='col-md-12 col-lg-4 col-11 mx-0 mt-lg-0 mt-md-5'>
                   <div className='right_side p-3 shadow-lg bg-white'>
-                    <h2 className='product_name mb-5'>The Total Amount Of</h2>
+                    <h2 className='product_name mb-5'>Cart Summery</h2>
                     <div className='price_indiv d-flex justify-content-between'>
                       <p>Total Quantity:</p>
                       <p>
@@ -162,18 +173,18 @@ const totalQty = qty.reduce(reducerOfQty,0);
                     <div className='price_indiv d-flex justify-content-between'>
                       <p>Shipping Charge</p>
                       <p>
-                        Rs. <span>50.00</span>
+                        Rs. <span>100.00</span>
                       </p>
                     </div>
                     <hr />
                     <div className='total_amt d-flex justify-content-between fw-bold'>
                       <p>Total amount(including VAT)</p>
                       <p>
-                        Rs. <span>{totalPrice + 50}</span>
+                        Rs. <span>{totalPrice + 100}</span>
                       </p>
                     </div>
-                    <button className='btn btn-primary text-uppercase '>
-                      Checkout
+                    <button className='btn btn-primary text-uppercase ' onClick={()=>triggerModel()}>
+                      Cash On Delivery
                     </button>
                   </div>
                   <div className='mt-3 shadow-lg p-3 bg-white '>
@@ -189,6 +200,9 @@ const totalQty = qty.reduce(reducerOfQty,0);
         </div>
       </div>
       ) }
+      {showModal === true && (
+        <Modal TotalPrice={totalPrice + 100} totalQty={totalQty} hideModal={hideModal}/>
+      )}
       
     </>
   );

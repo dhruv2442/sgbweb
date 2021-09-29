@@ -23,7 +23,7 @@ const ProductItem = ({item,addToCart}) => {
         </div>
 
         <div class='atc' onClick={handleAddToCart}>
-          <button>Add to Cart</button>
+          <button>Add to Cart <i class="fas fa-cart-plus"></i></button>
         </div>
       </div>
     )
