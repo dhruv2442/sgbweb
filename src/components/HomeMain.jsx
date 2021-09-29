@@ -1,9 +1,9 @@
-import React,{useContext} from 'react'
+import React from 'react'
 import Products from './Products'
-import { Data } from './Home';
+// import { Data } from './Home';
 
-const HomeMain = ({addToCart}) => {
-    const products = useContext(Data).data;
+const HomeMain = ({products,addToCart}) => {
+    // const products = useContext(Data).data;
     return (
         <>
         {products.length > 0 && (
