@@ -363,3 +363,13 @@ h2 {
   cursor: pointer;
 }
 
+
+/*Product Table*/
+.tbl-data:hover{
+  background: #6c757d;
+  
+}
+.tbl-data:hover th,.tbl-data:hover td,.tbl-data:hover td Link{
+  font-weight: 700;
+  color: white;
+}

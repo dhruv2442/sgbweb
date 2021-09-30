@@ -1,9 +1,7 @@
 import React from 'react';
 import Products from './Products'
-// import { Data } from './Home';
 
 const All = ({products,addToCart}) => {
-  // const products = useContext(Data).data;
     const allProducts = products.filter((elem) => {
         return elem.category !== 'Home';
       });
@@ -24,7 +22,6 @@ const All = ({products,addToCart}) => {
     )
 }
 const Sweets = ({products,addToCart}) => {
-  // const products = useContext(Data).data;
     const sweetProducts = products.filter((elem) => {
         return elem.category === "Sweets";
       });
@@ -45,7 +42,6 @@ const Sweets = ({products,addToCart}) => {
     )
 }
 const Namkeen = ({products,addToCart}) => {
-  // const products = useContext(Data).data;
     const namkeenProducts = products.filter((elem) => {
         return elem.category === "Namkeen";
       });
