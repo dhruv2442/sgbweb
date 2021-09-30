@@ -228,7 +228,7 @@ const totalQty = qty.reduce(reducerOfQty,0);
                 {/* right side div */}
                 <diiv className='col-md-12 col-lg-4 col-11 mx-0 mt-lg-0 mt-md-5'>
                   <div className='right_side p-3 shadow-lg bg-white'>
-                    <h2 className='product_name mb-5'>Cart Summery</h2>
+                    <h2 className='product_name mb-5'>Cart Summary</h2>
                     <div className='price_indiv d-flex justify-content-between'>
                       <p>Total Quantity:</p>
                       <p>
