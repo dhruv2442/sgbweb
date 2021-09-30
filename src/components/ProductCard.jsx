@@ -5,7 +5,7 @@ import { onAuthStateChanged } from "@firebase/auth";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
-const ProductCard = ({ cartProductIncrease,cartProductDecrease, product }) => {
+const ProductCard = ({ cartPktQty,cartProductIncrease,cartProductDecrease, product }) => {
   const { title, price, downloadURL, category, qty, TotalProductPrice } =
     product;
 
@@ -15,6 +15,9 @@ const ProductCard = ({ cartProductIncrease,cartProductDecrease, product }) => {
   const handleCartProductDecrease = () => {
     cartProductDecrease(product);
   };
+  const handlePktQty = (e) =>{
+    cartPktQty(e.target.value,product)
+  }
   const handleCartProductDelete=()=>{
     onAuthStateChanged(auth, (user) => {
         if (user) {
@@ -49,15 +52,7 @@ const ProductCard = ({ cartProductIncrease,cartProductDecrease, product }) => {
                 <select
                   id='inputState'
                   class='form-select'
-                  onChange={(e) => {
-                    if (e.target.value === '1 Kg') {
-                      // setPrice(props.price * 1);
-                    } else if (e.target.value === '500 gm') {
-                      // setPrice(props.price * 0.5);
-                    } else {
-                      // setPrice(props.price * 0.25);
-                    }
-                  }}
+                  onChange={handlePktQty}
                 >
                   <option selected>Choose Qty..</option>
                   <option>1 Kg</option>

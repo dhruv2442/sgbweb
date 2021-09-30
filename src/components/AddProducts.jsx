@@ -212,7 +212,7 @@ const AddProducts = () => {
                     <th scope='row'>{index + 1}</th>
                     <td>{obj.title}</td>
                     <td>{obj.price}</td>
-                    <td><Link to={obj.downloadURL} arget="_blank" rel="noopener noreferrer">image link</Link></td>
+                    <td><Link to={obj.downloadURL} target="_blank" rel="noopener noreferrer">image link</Link></td>
                   </tr>
                 );
               })}

@@ -1,10 +1,10 @@
 import React from 'react';
 import ProductCard from './ProductCard';
 
-const CartProducts = ({cartProducts,cartProductIncrease,cartProductDecrease}) => {
+const CartProducts = ({cartPktQty,cartProducts,cartProductIncrease,cartProductDecrease}) => {
 
     return( cartProducts.map((obj)=>{
-        return <ProductCard  key = {obj.ID} product={obj} cartProductIncrease={cartProductIncrease} cartProductDecrease={cartProductDecrease} />
+        return <ProductCard  key = {obj.ID} product={obj} cartPktQty={cartPktQty} cartProductIncrease={cartProductIncrease} cartProductDecrease={cartProductDecrease} />
       }))
 }
 

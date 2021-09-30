@@ -59,7 +59,7 @@ const Cart = () => {
     // console.log(cartProduct);
     Product = cartProduct;
     Product.qty = Product.qty + 1;
-    Product.TotalProductPrice = Product.qty * Product.price;
+    Product.TotalProductPrice = Product.qty * Product.pktPrice;
     //update firestore collection
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -79,7 +79,7 @@ const Cart = () => {
     Product = cartProduct;
     if(Product.qty > 1){
       Product.qty = Product.qty - 1;
-      Product.TotalProductPrice = Product.qty * Product.price;
+      Product.TotalProductPrice = Product.qty * Product.pktPrice;
       //update firestore collection
       onAuthStateChanged(auth, (user) => {
         if (user) {
@@ -92,6 +92,77 @@ const Cart = () => {
         }
       });
     }
+  }
+
+
+  //set PacketQty
+  const cartPktQty = (qty,cartProduct) =>{
+    Product = cartProduct;
+    if(qty === "1 Kg")
+    {
+      Product.pktQty = qty;
+      Product.pktPrice = Product.price * 1;
+      Product.TotalProductPrice = Product.pktPrice * Product.qty;
+      //update firestore collection
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          updateDoc(doc(collection(fs,'Cart' + user.uid),cartProduct.ID),Product).then(()=>{
+            console.log("Decrement Added")
+          })
+          }
+        else {
+          console.log('user is not logged in to increment');
+        }
+      }); 
+    }else if(qty === "500 gm"){
+      Product.pktQty = qty;
+      Product.pktPrice = Product.price /2 ;
+      Product.TotalProductPrice = Product.pktPrice * Product.qty;
+      //update firestore collection
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          updateDoc(doc(collection(fs,'Cart' + user.uid),cartProduct.ID),Product).then(()=>{
+            console.log("Decrement Added")
+          })
+          }
+        else {
+          console.log('user is not logged in to increment');
+        }
+      }); 
+
+    }else if(qty === "250 gm"){
+      Product.pktQty = qty;
+      Product.pktPrice = Product.price /4 ;
+      Product.TotalProductPrice = Product.pktPrice * Product.qty;
+      //update firestore collection
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          updateDoc(doc(collection(fs,'Cart' + user.uid),cartProduct.ID),Product).then(()=>{
+            console.log("Decrement Added")
+          })
+          }
+        else {
+          console.log('user is not logged in to increment');
+        }
+      }); 
+    }
+    else{
+      Product.pktQty = qty;
+      Product.pktPrice = Product.price * 1;
+      Product.TotalProductPrice = Product.pktPrice * Product.qty;
+      //update firestore collection
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          updateDoc(doc(collection(fs,'Cart' + user.uid),cartProduct.ID),Product).then(()=>{
+            console.log("Decrement Added")
+          })
+          }
+        else {
+          console.log('user is not logged in to increment');
+        }
+      }); 
+    }
+
   }
 
   // getting the qty from cartProducts in a seperate array
@@ -151,7 +222,7 @@ const totalQty = qty.reduce(reducerOfQty,0);
                 <div className='col-md-12 col-lg-8 col-11 mx-auto main_cart mb-lg-0 mb-5'>
                   <div className='card shadow-lg p-4'>
                     <h2 className='py-4 fw-bold'>Cart ({cartProducts.length} items)</h2>
-                    <CartProducts cartProducts={cartProducts} cartProductIncrease={cartProductIncrease} cartProductDecrease={cartProductDecrease}/>
+                    <CartProducts cartPktQty={cartPktQty} cartProducts={cartProducts} cartProductIncrease={cartProductIncrease} cartProductDecrease={cartProductDecrease}/>
                   </div>
                 </div>
                 {/* right side div */}

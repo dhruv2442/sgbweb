@@ -6,6 +6,7 @@ import { doc, getDoc, getDocs, collection ,setDoc,onSnapshot} from '@firebase/fi
 import { Route, Switch } from 'react-router';
 import HomeMain from './HomeMain';
 import { All, Namkeen, Sweets } from './CategoryStuff';
+import About from './About';
 // import { Route, Switch } from 'react-router';
 
 const Data = createContext();
@@ -81,8 +82,10 @@ const Home = (props) => {
       console.log(product);
       Product = product;
       Product['qty'] = 1;
-      // Product['itemPrice'] = Product.itemQty*Product.price; 
-      Product['TotalProductPrice'] = Product.price * Product.qty;
+      Product['pktQty'] = "1 kg";
+      // Product['itemPrice'] = Product.itemQty*Product.price;
+      Product['pktPrice']=Product.price;
+      Product['TotalProductPrice'] = Product.pktPrice* Product.qty;
       setDoc(doc(fs, 'Cart' + uid,product.ID), Product).then(()=>{
         window.alert(`${product.title} successfully added to cart`)
     })
@@ -131,6 +134,7 @@ const Home = (props) => {
         <Namkeen products={products} addToCart={addToCart}/>
         </Data.Provider>
       )}/>
+      <Route exact path='/about' component={About} ></Route>
 
       
       </Switch>

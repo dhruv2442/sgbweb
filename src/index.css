@@ -373,3 +373,44 @@ h2 {
   font-weight: 700;
   color: white;
 }
+
+/*About us Page*/
+
+.title_text{
+  font-size: 50px;
+}
+
+.head_container{
+  width: 500px;
+  overflow: hidden;
+  border: 10px solid #fff;
+  border-radius: 8px;
+  box-shadow: 10px 25px 30px rgba(0, 0, 0, 0.3); 
+}
+.head_container .wrapper{
+  width: 100%;
+  display: flex;
+  animation: slide 8s infinite;
+}
+.head_container .wrapper img{
+  width: 100%;
+}
+@keyframes slide{
+  0%{
+    transform: translateX(0);
+  }
+  50%{
+    transform: translateX(0);
+  }
+  55%{
+    transform: translateX(-100%);
+  }
+  100%{
+    transform: translateX(-100%);
+  }
+  
+}
+
+.About_info p{
+    font-size: 18px;
+}

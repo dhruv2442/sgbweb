@@ -81,6 +81,11 @@ const Navbar = ({ user,totalProducts }) => {
                 Namkeen
               </Link>
             </div>
+            <div>
+              <Link className='navlink' to='/about'>
+                About Us
+              </Link>
+            </div>
             <div className=' cart-menu-btn btn btn-primary btn-md position-relative text-white'>
               <Link className='navlink text-white' to='/cart'>
                 <i class='fas fa-shopping-cart' /> Cart <span class="badge bg-light text-dark">{totalProducts}</span>
