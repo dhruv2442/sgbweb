@@ -6,7 +6,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const ProductCard = ({ cartPktQty,cartProductIncrease,cartProductDecrease, product }) => {
-  const { title, price, downloadURL, category, qty, TotalProductPrice } =
+  const { title, price, downloadURL, category, qty, TotalProductPrice,pktQty } =
     product;
 
   const handleCartProductIncrease = () => {
@@ -52,6 +52,7 @@ const ProductCard = ({ cartPktQty,cartProductIncrease,cartProductDecrease, produ
                 <select
                   id='inputState'
                   class='form-select'
+                  value={pktQty}
                   onChange={handlePktQty}
                 >
                   <option selected>Choose Qty..</option>
