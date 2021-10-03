@@ -23,22 +23,22 @@ const Navbar = ({ user,totalProducts }) => {
         {!user && (
           <>
           <div>
-              <Link className='navlink' to='/'>
+              <Link className='navlink nav-hover' to='/'>
                 Home
               </Link>
             </div>
             <div>
-              <Link className='navlink' to='/all'>
+              <Link className='navlink nav-hover' to='/all'>
                 All Products
               </Link>
             </div>
             <div>
-              <Link className='navlink' to='/sweets'>
+              <Link className='navlink nav-hover' to='/sweets'>
                 Sweets
               </Link>
             </div>
             <div>
-              <Link className='navlink' to='/namkeen'>
+              <Link className='navlink nav-hover' to='/namkeen'>
                 Namkeen
               </Link>
             </div>
@@ -57,32 +57,32 @@ const Navbar = ({ user,totalProducts }) => {
         {user && (
           <>
             <div>
-              <Link className='navlink' to='/'>
+              <Link className='navlink nav-hover' to='/'>
                 {user}
               </Link>
             </div>
             <div>
-              <Link className='navlink' to='/'>
+              <Link className='navlink nav-hover' to='/'>
                 Home
               </Link>
             </div>
             <div>
-              <Link className='navlink' to='/all'>
+              <Link className='navlink nav-hover' to='/all'>
                 All Products
               </Link>
             </div>
             <div>
-              <Link className='navlink' to='/sweets'>
+              <Link className='navlink nav-hover' to='/sweets'>
                 Sweets
               </Link>
             </div>
             <div>
-              <Link className='navlink' to='/namkeen'>
+              <Link className='navlink nav-hover' to='/namkeen'>
                 Namkeen
               </Link>
             </div>
             <div>
-              <Link className='navlink' to='/about'>
+              <Link className='navlink nav-hover' to='/about'>
                 About Us
               </Link>
             </div>

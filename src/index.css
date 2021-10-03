@@ -94,8 +94,13 @@ input[type=number] {
 }
 
 .navbar .rightside div .navlink{
+  padding: 10px;
   text-decoration: none;
   color: #000;
+}
+.navbar .rightside div .nav-hover:hover{
+  background: skyblue;
+  border-radius: 7px;
 }
 
 
